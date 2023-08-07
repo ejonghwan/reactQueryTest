@@ -1,7 +1,7 @@
 import React from 'react';
 // import { useQuery } from '@tanstack/react-query';
 // import axios from 'axios';
-import  useUserQuery from './hooks/useUserQuery';
+import  { useUserQuery } from './hooks/useUserQuery';
 
 const UserInfo = () => {
    

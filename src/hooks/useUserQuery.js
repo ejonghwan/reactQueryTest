@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
 const getUser = async ({ queryKey }) => {
     // console.log(queryKey[1].userId)
@@ -7,14 +7,12 @@ const getUser = async ({ queryKey }) => {
     queryKey[1].userId ?
         (res = await axios.get(`https://jsonplaceholder.typicode.com/users/${queryKey[1].userId}`) ) :
         (res = await axios.get(`https://jsonplaceholder.typicode.com/users/`)) 
-        
-   
-    console.log('res?', res)
+    // console.log('res?', res)
     const data = res.data;
     return data;
 }
 
-const useUserQuery = ({ userId, cacheTime, staleTime }) => {
+export const useUserQuery = ({ userId, cacheTime, staleTime }) => {
     return useQuery(['userData', { userId: userId }], getUser, {
         refetchOnWindowFocus: false,
         refetchOnMount: false,
@@ -23,5 +21,26 @@ const useUserQuery = ({ userId, cacheTime, staleTime }) => {
     });
 }
 
-export default useUserQuery
+
+
+export const updateUserName = async (queryKey, userName) => {
+    const res = await axios.put(`https://jsonplaceholder.typicode.com/users/${queryKey[1].userId}`, {
+        title: userName
+    })
+    return res;
+} 
+
+export const useUpdateUserNameMutation = () => {
+    const queryClient = useQueryClient([]);
+    return useMutation(updateUserName, {
+        onSuccess: (newUser) => {
+            console.log('onse?', newUser)
+            queryClient.setQueryData(['user'], newUser)
+        }
+    })
+}
+
+
+
+// export default useUserQuery
 

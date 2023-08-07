@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import useUserQuery from './hooks/useUserQuery';
+import { useUserQuery } from './hooks/useUserQuery';
 import { Link } from 'react-router-dom';
 
 const Users = () => {
