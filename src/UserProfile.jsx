@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import { useUserQuery, useUpdateUserNameMutation } from './hooks/useUserQuery';
+import { useMutation } from '@tanstack/react-query';
 
 const UserProfile = () => {
 
     const { id } = useParams();
-    const {data, isLoading, isSuccess, isError} = useUserQuery({userId: id, cacheTime: 200, staleTime: 200})
-    const [UserName, setUserName] = useState(null)
+    const {data, isLoading, isSuccess, isError} = useUserQuery({id: Number(id), cacheTime: 200, staleTime: 200})
+    const [UserName, setUserName] = useState(data?.name)
 
     const userMutation = useUpdateUserNameMutation()
     
+    useEffect(() => {
+        console.log(data)
+        console.log('name', data?.name)
+    }, [isSuccess, data])
+
     const handleSubmit = e => {
         e.preventDefault();
-        // updateUserName
-        // console.log(UserName)
-        userMutation.mutate(UserName)
-        console.log(userMutation)
+        userMutation.mutate({ userName: UserName, id: id })
     }
 
     return (
