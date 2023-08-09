@@ -13,9 +13,9 @@ const UserProfile = () => {
     const userMutation = useUpdateUserNameMutation()
     
     useEffect(() => {
-        console.log(data)
-        console.log('name', data?.name)
-    }, [isSuccess, data])
+        // console.log(data)
+        // console.log('name', data?.name)
+    }, [data])
 
     const handleSubmit = e => {
         e.preventDefault();
