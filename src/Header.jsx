@@ -7,6 +7,9 @@ const Header = () => {
             <ul>
                 <li><Link to="/userinfo">user info</Link></li>
                 <li><Link to="/users">users</Link></li>
+                <li><Link to="/memo">memo</Link></li>
+                <li><Link to="/state">state</Link></li>
+                <li><Link to="/effect">effect</Link></li>
             </ul>
         </nav>
     );
