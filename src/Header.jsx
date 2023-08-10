@@ -13,6 +13,7 @@ const Header = () => {
                 <li><Link to="/ref">ref</Link></li>
                 <li><Link to="/usememo">useMemo</Link></li>
                 <li><Link to="/usecallback">useCallback</Link></li>
+                <li><Link to="/customhooks">customhooks</Link></li>
             </ul>
         </nav>
     );

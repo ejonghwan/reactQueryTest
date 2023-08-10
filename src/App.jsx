@@ -15,6 +15,7 @@ import Effect from './pages/Effect'
 import Ref from './pages/Ref'
 import UseMemo from './pages/UseMemo'
 import UseCallback from './pages/UseCallback'
+import CustomHooks from './pages/CustomHooks'
 
 
 const App = () => {
@@ -40,6 +41,7 @@ const App = () => {
            <Route path="ref" element={<Ref />} />
            <Route path="usememo" element={<UseMemo />} />
            <Route path="usecallback" element={<UseCallback />} />
+           <Route path="customhooks" element={<CustomHooks />} />
          </Routes>
          
 

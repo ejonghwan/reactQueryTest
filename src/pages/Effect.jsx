@@ -23,6 +23,11 @@ const Effect = () => {
         console.log('num state가 변경될 리렌더링되니깐 그떄마다 여기도 실행됨')
     }, [Num])
 
+
+
+
+    // 실험1 
+    // useEffect 의존성에 함수는 왜 넣는걸까 ? 함수는 안에 값이 변경되어도 useEffect가 실행되지않음. useState의 두번째 인자 함수를 변경해도 안되는데..흠.. 
     return (
         <div>
             
