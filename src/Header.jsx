@@ -10,6 +10,9 @@ const Header = () => {
                 <li><Link to="/memo">memo</Link></li>
                 <li><Link to="/state">state</Link></li>
                 <li><Link to="/effect">effect</Link></li>
+                <li><Link to="/ref">ref</Link></li>
+                <li><Link to="/usememo">useMemo</Link></li>
+                <li><Link to="/usecallback">useCallback</Link></li>
             </ul>
         </nav>
     );

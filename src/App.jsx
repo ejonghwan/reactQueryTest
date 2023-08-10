@@ -13,6 +13,8 @@ import State from './pages/State'
 import Memo from './pages/Memo'
 import Effect from './pages/Effect'
 import Ref from './pages/Ref'
+import UseMemo from './pages/UseMemo'
+import UseCallback from './pages/UseCallback'
 
 
 const App = () => {
@@ -36,6 +38,8 @@ const App = () => {
            <Route path="memo" element={<Memo />} />
            <Route path="effect" element={<Effect />} />
            <Route path="ref" element={<Ref />} />
+           <Route path="usememo" element={<UseMemo />} />
+           <Route path="usecallback" element={<UseCallback />} />
          </Routes>
          
 

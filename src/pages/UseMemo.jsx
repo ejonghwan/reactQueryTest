@@ -1,4 +1,15 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
+
+function hardCalc(number) {
+    console.log('heavy')
+    for(let i = 0; i < 999999999; i++) {} //생각하는 시간
+    return number + 10000;
+}
+
+function easyCalc(number) {
+    console.log('easy')
+    return number + 1;
+}
 
 const UseMemo = () => {
 
@@ -25,10 +36,33 @@ const UseMemo = () => {
     */
 
 
+
+        // 아래 소스는 hard를 변경했을 때 1초 늦게 적용됨. 무거운 계산떔에..근데 easy를 눌러도 똑같음 그건 리렌더링 되면서 하드도 같이 다시 계산하기때문.. 이걸 useMemo로  hard가 변경됐을때만 계산하게 바꿔줘야됨 
+
+        const [ hardNum, setHardNum ] = useState(1);
+        const [ easyNum, setEasyNum ] = useState(1);
+
+        // const hardSum = hardCalc(hardNum) //적용 전 소스
+        const hardSum = useMemo(() => {
+            return hardCalc(hardNum) //useMemo로 변경해주면 얘는 다시 계산하지않음
+        }, [hardNum])
+        const easySum = easyCalc(easyNum)
+
+
     return (
         <div>
 
+            <div>
+                <h3>어려운 계산</h3>
+                <input type="number" value={hardNum} onChange={e => setHardNum(parseInt(e.target.value))}/>
+                <span>+ 10000 = {hardSum}</span>
+            </div>
 
+            <div>
+                <h3>쉬운 계산</h3>
+                <input type="number" value={easyNum} onChange={e => setEasyNum(parseInt(e.target.value))}/>
+                <span>+ 10000 = {easySum}</span>
+            </div>
 
 
         </div>
